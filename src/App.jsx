@@ -2,120 +2,65 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
-import './App.css'
+import './App.module.css'
+
+import PixelCard from './components/PixelCard/PixelCard'
+import Particles from './components/Particles'
+
+
+let char = {
+  name: {first:"Lorenzo", last: "Calzone"},
+  title: "Sir",
+  level: 35,
+  race: "Human",
+  class: "Kitchen-Knight",
+  abilities: [
+    {name: "Heavy Knead", rank: 3},
+    {name: "Precarious Dash", rank: 2},
+    {name: "Quick Stir", rank: 2}
+  ]
+}
 
 function App() {
   const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+  return (<>
+  
+    <section className='fixed w-full h-full bg-[#200b41] top-0 left-0'>
+      <Particles
+        particleCount={570}
+        particleSpread={7}
+        speed={0.25}
+        particleColors={["#b380ff","#d89eff","#c3c2ff"]}
+        moveParticlesOnHover
+        particleHoverFactor={0.3}
+        alphaParticles
+        particleBaseSize={170}
+        sizeRandomness={0.6}
+        cameraDistance={17}
+        disableRotation
+      />
+    </section>
+
+    <PixelCard variant='pink' className='ml-auto mr-auto mt-[5vh] max-w-5/6 max-h-[90vh] border-amber-200'>
+      <div className='w-full h-full absolute left-0 top-0 text-amber-200'>
+        <h1 className='text-4xl text-center p-5 font-mono'>Character Sheet</h1>
+        <hr />
+        <section>
+          <h2 className='text-3xl'>{char.title} {char.name.first} {char.name.last}</h2>
+          <hr />
+          <h2 className='text-3xl'>Level {char.level} {char.race} {char.class}</h2>
+          <hr />
+          <p>Abilities:
+          <ul className='pl-5'>
+            {char.abilities.map(ability => <li>RANK {ability.rank} // {ability.name}</li>)}
+          </ul>
           </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+        </section>
+      </div>
+    </PixelCard>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+  </>)
 }
 
 export default App
