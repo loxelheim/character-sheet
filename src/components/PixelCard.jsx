@@ -233,6 +233,9 @@ export default function PixelCard({ variant = 'default', gap, speed, colors, noF
         transition-colors duration-200 
         ease-[cubic-bezier(0.5,1,0.89,1)] 
         select-none 
+        ml-auto mr-auto mt-[5vh] 
+        max-w-5/6 max-h-[90vh]
+        w-fit h-fit
         ${className}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -241,7 +244,9 @@ export default function PixelCard({ variant = 'default', gap, speed, colors, noF
       tabIndex={finalNoFocus ? -1 : 0}
     >
       <canvas className="w-full h-full block" ref={canvasRef} />
-      {children}
+      <div className='w-full h-full absolute left-0 top-0'>
+        {children}
+      </div>
     </div>
   );
 }
