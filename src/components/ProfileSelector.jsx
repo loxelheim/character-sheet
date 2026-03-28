@@ -27,21 +27,20 @@ function ProfileSelector() {
         {!showDetail ? 
         <ul className='p-10'>
           {users.map((user, i) => 
-            <li key={user.id} className='
-              border-2 border-amber-250 rounded-md
-              p-2 m-1 
-              bg-violet-500
-              hover:bg-violet-800
-            '>
-              <button onClick={() => { showUserDetail(user) }}>🔍 {user.name} 🔍</button>
+            <li key={user.id} className=' 
+              p-4 mb-4
+              bg-beige
+              hover:bg-beige-100
+              shadow-xl shadow-beige-400
+            ' onClick={() => { showUserDetail(user) }}>
+              <button >▶ {user.name}</button>
             </li>
           )}
         </ul> : <section className='p-10'>
           { currentUser !== null ? <section className='
-            border-2 border-amber-250 rounded-md
-            p-2 m-1 
-            bg-violet-500
-            hover:bg-violet-800'>
+            p-4 
+            border-beige-200 
+            bg-beige'>
             {/* Detail view for profile */}
             <h2>Clone Nr. {currentUser.id} // {currentUser.username}</h2>
             <hr />
